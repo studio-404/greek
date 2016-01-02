@@ -7,7 +7,8 @@ class homepage extends connection{
 	public function template($c){
 		$conn = $this->conn($c); // connection
 		$cache = new cache();
-		$data["homepage_general"] = $cache->index($c,"homepage_general");
+		$homepage_general = $cache->index($c,"homepage_general");
+		$data["homepage_general"] = json_decode($homepage_general); 
 	
 		$data["homepage_files"] = $cache->index($c,"homepage_files");
 
@@ -35,14 +36,14 @@ class homepage extends connection{
 		$data["components"] = json_decode($components); 
 
 		/* multimedia */
-		$multimedia = $cache->index($c,"multimedia");
-		$data["multimedia"] = json_decode($multimedia); 
+		// $multimedia = $cache->index($c,"multimedia");
+		// $data["multimedia"] = json_decode($multimedia); 
 
-		$news = $cache->index($c,"news");
-		$data["news"] = json_decode($news);
+		// $news = $cache->index($c,"news");
+		// $data["news"] = json_decode($news);
 
-		$events = $cache->index($c,"events");
-		$data["events"] = json_decode($events);
+		// $events = $cache->index($c,"events");
+		// $data["events"] = json_decode($events);
 
 		@include($c["website.directory"]."/homepage.php"); 
 	}
