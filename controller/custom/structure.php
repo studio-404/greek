@@ -1,10 +1,10 @@
 <?php if(!defined("DIR")){ exit(); }
-class text extends connection{
+class structure extends connection{
 	function __construct($c){
-		$this->template($c);
+		$this->template($c,"structure");
 	}
-
-	public function template($c){
+	
+	public function template($c,$page){
 		$conn = $this->conn($c); // connection
 
 		$cache = new cache();
@@ -35,22 +35,18 @@ class text extends connection{
 		$data["main_menu"] = $model_template_main_menu->nav($menu_array,"header");
 		$data["footer_menu"] = $model_template_main_menu->nav($menu_array,"footer");
 
-		/* website left menu */
-		// $left_menu = $cache->index($c,"left_menu");
-		// $left_menu = json_decode($left_menu);
-		// $data["left_menu"] = $model_template_main_menu->left($left_menu);
-
-		/* breadcrups */
-		// $breadcrups = $cache->index($c,"breadcrups");
-		// $data["breadcrups"] = json_decode($breadcrups);
 
 		/* components */
 		$components = $cache->index($c,"components");
 		$data["components"] = json_decode($components); 
-		
 
 
-		@include($c["website.directory"]."/text.php"); 
+		$include = WEB_DIR."/structure.php";
+		if(file_exists($include)){
+			@include($include);
+		}else{
+			$controller = new error_page(); 
+		}
 	}
 }
 ?>

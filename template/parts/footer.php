@@ -5,6 +5,6 @@
 	</div>
 </div>
 
-
+<script type="text/javascript" src="<?php echo TEMPLATE;?>js/scripts.js?v=<?=$c['websitevertion']?>"></script>
 </body>
 </html>

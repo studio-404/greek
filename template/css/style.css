@@ -194,7 +194,7 @@ html,body  {
 	padding-right:10px;
 }
 .register_div .title{
-	background:#3877af url('../img/reg_icon.png') no-repeat;
+	background:#6d659e url('../img/reg_icon.png') no-repeat;
 	background-position:10px 10px;
 	text-align:center;
 	color:#fff;
@@ -414,7 +414,7 @@ html,body  {
 	padding:4px;
 }
 .button_1 {
-	background:#3877af;
+	background:#6d659e;
 	font-family:bpg_anna;
 	font-size:14px;
 	color:#fff;
@@ -443,9 +443,17 @@ html,body  {
 	font-size:16px;
 	font-family:bpg_anna;
 }
-
-
-
-
-
-
+.underlineme:hover{ text-decoration: underline !important; }
+.usersnavigation{ }
+.usersnavigation li{ margin:0; width: 100%; float: left; border-bottom: solid 1px #f58220;  }
+.nav-pills > li + li{ margin-left: 0px !important;  }
+.usersnavigation a{ padding:10px 15px 9px 15px !important; color: #555555; border-radius: 0 !important; background-color: #f2f2f2; }
+.usersnavigation a:active{ padding:10px 15px 9px 15px !important; color: #555555; border-radius: 0 !important; background-color: #f2f2f2; }
+.usersnavigation a:focus{ padding:10px 15px 9px 15px !important; color: #555555; border-radius: 0 !important; background-color: #f2f2f2; }
+.usersnavigation a:visited{ padding:10px 15px 9px 15px !important; color: #555555; border-radius: 0 !important; background-color: #f2f2f2; }
+.usersnavigation a:link{ padding:10px 15px 9px 15px !important; color: #555555; border-radius: 0 !important; background-color: #f2f2f2; }
+.usersnavigation a:hover{ background-image: none !important; background-color: #f58220 !important; color: white; border-radius: 0 !important; }
+.usersnavigation .active a{ background-image: none !important; background-color: #f58220 !important; color: white; border-radius: 0 !important; }
+select{ background: #f2f2f2; border: solid #cccccc 1px; display: block; width: 100%; padding: 4px;} 
+.panel-heading{ border-radius: 0px !important }
+.panel-group .panel{ border-radius: 0px !important } 

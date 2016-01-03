@@ -30,11 +30,8 @@ echo $title;
 <link rel="stylesheet" href="<?php echo TEMPLATE;?>css/custom_res.css?v=<?=$c['websitevertion']?>"> 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?v=<?=$c['websitevertion']?>"></script>
 <script type="text/javascript" src="<?php echo TEMPLATE;?>js/bootstrap.js?v=<?=$c['websitevertion']?>"></script>
-<script type="text/javascript" src="<?php echo TEMPLATE;?>js/jquery-1.11.3.min.js?v=<?=$c['websitevertion']?>"></script>
-<script type="text/javascript" src="<?php echo TEMPLATE;?>js/scripts.js?v=<?=$c['websitevertion']?>"></script>
 </head>
 <body> 
-
 <div class="header_div" <?=(LANG=="en") ? 'style="font-family: roboto"' : ''?>>
 	<div class="container">
 		<div class="logo">
@@ -48,7 +45,14 @@ echo $title;
 			<input type="submit" value="<?=$data["language_data"]["val3"]?>"/>
 		</div>
 		<div class="reg_login">
-			<a href="<?=WEBSITE.LANG?>/structure"><?=$data["language_data"]["val92"]?></a>
+			<?php if(!isset($_SESSION["greek_id"])): ?>
+			<a href="<?=WEBSITE.LANG?>/userspage" class="underlineme"><?=$data["language_data"]["val92"]?></a>
+			<?php endif; ?>
+
+			<?php if(isset($_SESSION["greek_id"])): ?>
+			<a href="<?=WEBSITE.LANG?>/userspage" class="underlineme"><?=$data["language_data"]["val101"]?></a> <a>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+			<a href="javascript:void(0)" class="signout underlineme"><?=$data["language_data"]["val102"]?></a> 
+			<?php endif; ?>
 		</div>
 		<div class="lang_div">
 			<?php
@@ -57,7 +61,7 @@ echo $title;
 				$repl = (LANG=="ge") ? '/en/' : '/ge/';
 				$replace = str_replace($find, $repl, $actual_link);
 			?>
-			<a href="<?=$replace?>" id="language" data-currentlang="<?=LANG?>"><?=(LANG=="ge") ? "ENGLISH" : "GEORGIAN"?></a>
+			<a href="<?=$replace?>" id="currlanguage" data-currentlang="<?=LANG?>"><?=(LANG=="ge") ? "ENGLISH" : "GEORGIAN"?></a>
 		</div>
 	</div>
 </div>

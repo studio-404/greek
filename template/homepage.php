@@ -1,11 +1,6 @@
 <?php 
 @include("parts/header.php");
-@include("parts/eventregister.php");
-//$ctext = new ctext();
-
-
 ?>
-
 <div class="container">
 	<div class="home_slider">
 		<div id="home_slider" class="carousel slide" data-ride="carousel">
