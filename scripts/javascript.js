@@ -44,6 +44,15 @@ $(document).ready(function(){
 	setInterval(function(){ getDate('#widget')},1000 );
 });
 
+$(document).on("click",".calluploaddocument", function(){
+	$("#docs").click();
+});
+
+$(document).on("change","#docs", function(e){
+	var files = e.target.files;
+	$(".calluploaddocument").css({"background-color":"red"});
+	$(".calluploaddocument").text(files[0].name);
+});
 
 function askBeforeDelete(type,idx) {
 	var x = confirm("Would you like to delete item?");

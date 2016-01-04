@@ -30,6 +30,13 @@ echo $title;
 <link rel="stylesheet" href="<?php echo TEMPLATE;?>css/custom_res.css?v=<?=$c['websitevertion']?>"> 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?v=<?=$c['websitevertion']?>"></script>
 <script type="text/javascript" src="<?php echo TEMPLATE;?>js/bootstrap.js?v=<?=$c['websitevertion']?>"></script>
+<style type="text/css">
+<?php
+if(LANG=="en"){
+	echo '*{ font-family: roboto !important; }';
+}
+?>
+</style>
 </head>
 <body> 
 <div class="header_div" <?=(LANG=="en") ? 'style="font-family: roboto"' : ''?>>

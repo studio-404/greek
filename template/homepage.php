@@ -9,6 +9,7 @@
 				<?php
 				$x = 0;
 				foreach ($data["components"] as $value) {
+					if($value->com_name != "Main page slider"){ continue; }
 					$item = ($x==0) ? ' active' : '';
 					?>
 					<div class="item<?=$item?>">

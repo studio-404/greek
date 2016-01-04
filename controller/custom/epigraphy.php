@@ -1,7 +1,7 @@
 <?php if(!defined("DIR")){ exit(); }
-class contact extends connection{
+class epigraphy extends connection{
 	function __construct($c){
-		$this->template($c,"contact");
+		$this->template($c,"epigraphy");
 	}
 	
 	public function template($c,$page){
@@ -10,6 +10,13 @@ class contact extends connection{
 		$cache = new cache();
 		$homepage_general = $cache->index($c,"homepage_general");
 		$data["homepage_general"] = json_decode($homepage_general); 
+
+
+		$text_files = $cache->index($c,"text_files");
+		$data["text_files"] = json_decode($text_files);
+
+		$text_documents = $cache->index($c,"text_documents");
+		$data["text_documents"] = json_decode($text_documents);
 
 		/* languages */
 		$languages = $cache->index($c,"languages");
@@ -32,10 +39,9 @@ class contact extends connection{
 		/* components */
 		$components = $cache->index($c,"components");
 		$data["components"] = json_decode($components); 
-
-		$include = WEB_DIR."/contact.php";
+		$include = WEB_DIR."/epigraphy.php";
 		if(file_exists($include)){
-		@include($include);
+			@include($include);
 		}else{
 			$controller = new error_page(); 
 		}

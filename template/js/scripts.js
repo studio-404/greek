@@ -119,6 +119,17 @@ $(document).on("click","#update-profile", function(){
 	
 });
 
+$(document).on("click",".notsigned",function(){
+	if(LANG=="ge"){
+		$(".modal-title").html('შეტყობინება');
+		$(".modal-text").html('გთხოვთ გაიაროთ ავტორიზაცია !');
+	}else{
+		$(".modal-title").html('Message');
+		$(".modal-text").html('Please sign in !');
+	}
+	$("#message").modal('toggle');
+});
+
 $(document).on("click","#changepass-button",function(){
 	var pwold = $("#password-old").val();
 	var pwnew = $("#password-new").val();

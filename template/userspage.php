@@ -63,16 +63,9 @@
 
 		  <div class="row"<?=$font?>>
 		 <div class="col-md-3">
-		 	<div class="users-profile-picture">
-		 		<img src="<?=TEMPLATE?>img/profile.jpg" width="100%" alt="usersprofile" />
-		 	</div>
 
-		 	<ul class="nav nav-pills usersnavigation" style="margin-top:20px;">
-			 <!--  <li role="presentation" class="active">
-				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="remo(this)">
-			  		<?=$data["language_data"]["val109"]?> ( 2 )
-			  	</a>
-			  </li> -->
+		 	<ul class="nav nav-pills usersnavigation">
+			 
 			  <li role="presentation" class="active">
 			  	<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="remo(this)">
 			  		<?=$data["language_data"]["val108"]?>
