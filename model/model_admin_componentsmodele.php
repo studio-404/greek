@@ -215,16 +215,24 @@ class model_admin_componentsmodele extends connection{
 			if(in_array($target_ext, $allow)){
 				if(move_uploaded_file($_FILES["docs"]["tmp_name"], $target_file)){
 					$documentsx = $target_file;
+
+					$sqlcomp = 'UPDATE `studio404_components_inside` SET `document`=:doc WHERE `idx`=:idx AND `lang`=:lang AND `status`!=:status';
+					$preparecomp = $conn->prepare($sqlcomp);
+					$preparecomp->execute(array(
+						":idx"=>$_GET['id'], 
+						":doc"=>$documentsx, 
+						":lang"=>LANG_ID, 
+						":status"=>1
+					)); 
 				}
 			}
 		}
 
-		$sql = 'UPDATE `studio404_components_inside` SET `title`=:title, `document`=:document, `desc`=:description, `url`=:url WHERE `idx`=:idx AND `lang`=:lang AND `status`!=:status';
+		$sql = 'UPDATE `studio404_components_inside` SET `title`=:title, `desc`=:description, `url`=:url WHERE `idx`=:idx AND `lang`=:lang AND `status`!=:status';
 		$prepare = $conn->prepare($sql);
 		$prepare->execute(array(
 			":title"=>$_POST['title'], 
 			":description"=>$_POST['shortdesc'], 
-			":document"=>$documentsx, 
 			":url"=>$_POST['url'], 
 			":idx"=>$_GET['id'], 
 			":lang"=>LANG_ID, 

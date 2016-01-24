@@ -16,19 +16,19 @@
 					</div>
 					<div class="form-group">
 						<label><?=$data["language_data"]["val96"]?>:</label>
-						<input type="text" id="namelname" class="form_1" value="" />
+						<input type="text" id="namelname" class="form_1" value="" onkeypress="submitme(event,'register-button')" />
 					</div>
 					<div class="form-group">
 						<label><?=$data["language_data"]["val41"]?>:</label>
-						<input type="text" id="email" class="form_1" value="" />
+						<input type="text" id="email" class="form_1" value="" onkeypress="submitme(event,'register-button')" />
 					</div>
 					<div class="form-group">
 						<label><?=$data["language_data"]["val49"]?>:</label>
-						<input type="password" id="password" class="form_1" value="" />
+						<input type="password" id="password" class="form_1" value="" onkeypress="submitme(event,'register-button')" />
 					</div>
 					<div class="form-group">
 						<label><?=$data["language_data"]["val97"]?>:</label>
-						<input type="password" id="repeat_password" class="form_1" value="" />
+						<input type="password" id="repeat_password" class="form_1" value="" onkeypress="submitme(event,'register-button')" />
 					</div>
 					<div class="form-group"> 
 						<input type="submit" value="<?=$data["language_data"]["val98"]?>" id="register-button" class="button_1" />
@@ -42,11 +42,11 @@
 					</div>
 					<div class="form-group">
 						<label><?=$data["language_data"]["val41"]?>:</label>
-						<input type="text" id="login-username" class="form_1" value="" />
+						<input type="text" id="login-username" class="form_1" value="" onkeypress="submitme(event,'login-button')" />
 					</div>
 					<div class="form-group">
 						<label><?=$data["language_data"]["val49"]?>:</label>
-						<input type="password" id="login-password" class="form_1" value="" />
+						<input type="password" id="login-password" class="form_1" value="" onkeypress="submitme(event,'login-button')" />
 					</div>
 					<div class="form-group"> 
 						<input type="submit" value="<?=$data["language_data"]["val100"]?>" id="login-button" class="button_2"/>
@@ -78,15 +78,11 @@
 			  </li>
 			</ul>
 		 </div>
-		 <div class="col-md-9">
+		 <div class="col-md-9 mobile-margin-top">
 
 		 	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			 
-
-			  
-			   
-
-			<!-- TAGS START -->
+<!-- TAGS START -->
 		   <div class="panel panel-default">
 			    <div class="panel-heading" role="tab" id="headingTwo">
 			      <h4 class="panel-title">
@@ -102,12 +98,12 @@
 
 			      		<div class="form-group">
 							<label><?=$data["language_data"]["val114"]?>: <font color="red">*</font></label>
-							<input type="text" id="username" class="form_1" value="<?=$_SESSION["greek_user"]?>" disabled="disabled" />
+							<input type="text" id="username" class="form_1" value="<?=$_SESSION["greek_user"]?>" disabled="disabled" onkeypress="submitme(event,'update-profile')" />
 						</div>
 
 						<div class="form-group">
 							<label><?=$data["language_data"]["val96"]?>: <font color="red">*</font></label>
-							<input type="text" id="profile-namelname" class="form_1" value="<?=$_SESSION["greek_namelname"]?>" />
+							<input type="text" id="profile-namelname" class="form_1" value="<?=$_SESSION["greek_namelname"]?>" onkeypress="submitme(event,'update-profile')" />
 						</div>					
 
 						<div class="form-group">
@@ -121,12 +117,12 @@
 
 						<div class="form-group">
 							<label><?=$data["language_data"]["val115"]?>: </label>
-							<input type="text" id="profile-email" class="form_1" value="<?=$_SESSION["greek_email"]?>" />
+							<input type="text" id="profile-email" class="form_1" value="<?=$_SESSION["greek_email"]?>" onkeypress="submitme(event,'update-profile')" />
 						</div>
 
 						<div class="form-group">
 							<label><?=$data["language_data"]["val107"]?>:</label>
-							<input type="text" id="profile-contactnumber" class="form_1" value="<?=$_SESSION["greek_mobile"]?>" />
+							<input type="text" id="profile-contactnumber" class="form_1" value="<?=$_SESSION["greek_mobile"]?>" onkeypress="submitme(event,'update-profile')" />
 						</div>
 						
 						<div class="form-group"> 
@@ -154,16 +150,16 @@
 			      	<div class="register_div">
 					<div class="form-group">
 						<label><?=$data["language_data"]["val111"]?>: <font color="red">*</font></label>
-						<input type="password" id="password-old" class="form_1" value="" />
+						<input type="password" id="password-old" class="form_1" value="" onkeypress="submitme(event,'changepass-button')" />
 					</div>
 					<div class="form-group">
 						<label><?=$data["language_data"]["val112"]?>: <font color="red">*</font></label>
-						<input type="password" id="password-new" class="form_1" value="" />
+						<input type="password" id="password-new" class="form_1" value="" onkeypress="submitme(event,'changepass-button')" />
 					</div>
 
 					<div class="form-group">
 						<label><?=$data["language_data"]["val116"]?>: <font color="red">*</font></label>
-						<input type="password" id="password-repeat" class="form_1" value="" />
+						<input type="password" id="password-repeat" class="form_1" value="" onkeypress="submitme(event,'changepass-button')" />
 					</div>
 
 				
@@ -174,11 +170,6 @@
 				</div>
 
 
-
-
-
-
-
 			      </div>
 			    </div>
 			  </div>
@@ -186,12 +177,6 @@
 
 
 			</div>
-
-
-			 
-
-
-
 
 
 		 	

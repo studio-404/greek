@@ -53,6 +53,44 @@ class ajax extends connection{
 			}			
 		}
 
+		if(Input::method("POST","loadmore")=="true"){
+			$type = Input::method("POST","t");
+			$from = Input::method("POST","f");
+			$to = Input::method("POST","t2");
+			$dlang = Input::method("POST","l");
+			
+			if($type=="epigraphy"){
+				$sql = 'SELECT * FROM `studio404_components_inside` WHERE `cid`=:cid AND `lang`=:lang AND `status`!=1 ORDER BY `position` ASC LIMIT '.$from.','.$to;
+				$prepare = $conn->prepare($sql); 
+				$prepare->execute(array(
+					":cid"=>8, 
+					":lang"=>$dlang
+				));
+				if($prepare->rowCount() > 0){
+					$fetch = $prepare->fetchAll(PDO::FETCH_ASSOC);
+					echo json_encode($fetch);
+				}else{
+					echo "Empty"; 
+				}
+			}else if($type=="usefulllinks"){
+				$sql = 'SELECT * FROM `studio404_components_inside` WHERE `cid`=:cid AND `lang`=:lang AND `status`!=1 ORDER BY `position` ASC LIMIT '.$from.','.$to;
+				$prepare = $conn->prepare($sql); 
+				$prepare->execute(array(
+					":cid"=>9, 
+					":lang"=>$dlang
+				));
+				if($prepare->rowCount() > 0){
+					$fetch = $prepare->fetchAll(PDO::FETCH_ASSOC);
+					echo json_encode($fetch);
+				}else{
+					echo "Empty"; 
+				}
+			}else{
+				echo "Notin";
+			}
+			exit();
+		}
+
 		if(Input::method("POST","logintry")=="true"){
 			if(!Input::method("POST","e") || !Input::method("POST","p")){
 				echo "Error";
@@ -68,6 +106,8 @@ class ajax extends connection{
 				// echo "WPP 2";
 				if($prepare->rowCount() > 0){
 					$fetch = $prepare->fetch(PDO::FETCH_ASSOC); 
+					$sql_update = 'UPDATE `studio404_users` SET `logtime`="'.time().'" WHERE `id`='.$fetch["id"];
+					$query = $conn->query($sql_update);
 					$_SESSION["greek_id"] = $fetch["id"];
 					$_SESSION["greek_user"] = $fetch["username"];
 					$_SESSION["greek_picture"] = $fetch["picture"];

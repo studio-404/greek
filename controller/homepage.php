@@ -35,9 +35,9 @@ class homepage extends connection{
 		$components = $cache->index($c,"components");
 		$data["components"] = json_decode($components); 
 
-		/* multimedia */
-		// $multimedia = $cache->index($c,"multimedia");
-		// $data["multimedia"] = json_decode($multimedia); 
+		/* epigraphy */
+		// $epigraphy = $cache->index($c,"epigraphy");
+		// $data["epigraphy"] = json_decode($epigraphy); 
 
 		// $news = $cache->index($c,"news");
 		// $data["news"] = json_decode($news);

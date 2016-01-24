@@ -1,22 +1,23 @@
 <?php if(!defined("DIR")){ exit(); }
-class photogallery extends connection{
+class usefulllinks extends connection{
 	function __construct($c){
-		$this->template($c);
+		$this->template($c,"usefulllinks");
 	}
-
-	public function template($c){
+	
+	public function template($c,$page){
 		$conn = $this->conn($c); // connection
 
 		$cache = new cache();
 		$homepage_general = $cache->index($c,"homepage_general");
 		$data["homepage_general"] = json_decode($homepage_general); 
-		
-		$text_general = $cache->index($c,"text_general");
-		$data["text_general"] = json_decode($text_general,true);
 
-		$photo_gallery_list = $cache->index($c,"photo_gallery_list");
-		$data["photo_gallery_list"] = json_decode($photo_gallery_list); 
-		
+
+		$text_files = $cache->index($c,"text_files");
+		$data["text_files"] = json_decode($text_files);
+
+		$text_documents = $cache->index($c,"text_documents");
+		$data["text_documents"] = json_decode($text_documents);
+
 		/* languages */
 		$languages = $cache->index($c,"languages");
 		$data["languages"] = json_decode($languages); 
@@ -34,19 +35,17 @@ class photogallery extends connection{
 		$data["main_menu"] = $model_template_main_menu->nav($menu_array,"header");
 		$data["footer_menu"] = $model_template_main_menu->nav($menu_array,"footer");
 
-		/* website left menu */
-		
-
-		/* fotogallery */
-		$fotogallery = $cache->index($c,"files_");
-		$data["fotogallery"] = json_decode($fotogallery);
 
 		/* components */
 		$components = $cache->index($c,"components");
 		$data["components"] = json_decode($components); 
-
-
-		@include($c["website.directory"]."/photogallery.php"); 
+		
+		$include = WEB_DIR."/usefulllinks.php";
+		if(file_exists($include)){
+			@include($include);
+		}else{
+			$controller = new error_page(); 
+		}
 	}
 }
 ?>

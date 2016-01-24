@@ -1,0 +1,63 @@
+#images|styles|scripts|uploads|_manager|_website|_cache|
+RewriteRule ^(images|styles|scripts|flash|files|files_pre|_plugins|.*\.(doc|docx|xls|xlsx|css|js|jpg|mp3|jpeg|gif|swf|xml|png|pdf|ico|zip|rar|php|html|txt|sql|woff|eot|ttf|svg|csv)) - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f [OR] 
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . open.php [QSA,L]
+
+# choose opener file
+DirectoryIndex open.php 
+
+# block access to some sensible files
+<Files ~ "^sftp-config.json|.git|.htaccess|config.php|functions|backup|controller|model|view|_plugins|_temporaty">
+  Order allow,deny
+  Deny from all
+</Files>
+
+<IfModule php5_module>
+    php_flag session.cookie_httponly on
+    php_flag display_errors 1
+</IfModule>
+
+# force non-www domain
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 89.38.144.160
+deny from 188.143.232.37
+deny from 188.129.129.222
+deny from 188.143.232.11
+deny from 119.157.148.123
+deny from 93.80.116.134
+deny from 78.139.137.159
+deny from 196.44.98.54
+deny from 37.146.69.247
+deny from 190.98.162.22
+deny from 94.76.179.1
+deny from 209.249.157.69
+deny from 5.135.5.113
+deny from 95.24.235.148
+deny from 187.44.1.54
+deny from 181.168.99.14
+deny from 195.154.191.67
+deny from 186.225.99.155
+deny from 176.10.107.180
+deny from 37.146.64.81
+deny from 177.223.12.121
+deny from 188.166.88.240
+deny from 108.166.168.158
+deny from 82.154.101.107
+deny from 194.150.168.95
+deny from 95.25.10.19
+deny from 88.208.252.195
+deny from 50.63.8.35
+deny from 65.75.160.133
+deny from 109.101.104.181
+deny from 80.196.166.198
+deny from 176.9.139.131
+deny from 184.168.46.66

@@ -1,6 +1,7 @@
 var PROTOCOL = "http://";
 var LANG = $(".lang_div a").attr("data-currentlang");
-var AJAX_REQUEST_URL = PROTOCOL+document.domain+"/"+LANG+"/ajax";
+var WEBSITE = PROTOCOL+document.domain;
+var AJAX_REQUEST_URL = WEBSITE+"/"+LANG+"/ajax";
 
 $(document).on("click","#register-button",function(){
 	var namelname = $("#namelname").val();
@@ -67,8 +68,21 @@ $(document).on("click","#login-button", function(){
 		$("#resalt2").html('<font color="red">Please wait...</font>').fadeIn("slow");
 	}
 
-	$.post(AJAX_REQUEST_URL,{ logintry:true, e:username, p:password },function(r){
-			if(r=="Done"){
+	if(typeof(username) == "undefined" || username==null || username==""){
+		if(LANG=="ge"){
+			$("#resalt2").html('<font color="red">გთხოვთ შეავსოთ ელ-ფოსტის ველი !</font>').fadeIn("slow");
+		}else{
+			$("#resalt2").html('<font color="red">Please fill email field !</font>').fadeIn("slow");
+		}
+	}else if(typeof(password) == "undefined" || password==null || password==""){
+		if(LANG=="ge"){
+			$("#resalt2").html('<font color="red">გთხოვთ შეავსოთ პაროლის ველი !</font>').fadeIn("slow");
+		}else{
+			$("#resalt2").html('<font color="red">Please fill password field !</font>').fadeIn("slow");
+		}
+	}else{
+		$.post(AJAX_REQUEST_URL,{ logintry:true, e:username, p:password },function(r){
+			if(r=="Done"){ 
 				location.reload();
 			}else{
 				if(LANG=="ge"){
@@ -77,8 +91,14 @@ $(document).on("click","#login-button", function(){
 					$("#resalt2").html('<font color="red">Username or Password is wrong !</font>').fadeIn("slow");	
 				}
 			}
-	});
+		});
+	}
+});
 
+//
+$(document).on("click","#search-button", function(){
+	var key = $("#keyword").val();
+	location.href = PROTOCOL+document.domain+"/"+LANG+"/keywords?search="+encodeURIComponent(key);
 });
 
 $(document).on("click",".signout", function(){
@@ -88,7 +108,44 @@ $(document).on("click",".signout", function(){
 	});
 });
 
-//
+$(document).on("click",".loadmore",function(){
+	var type = $(this).attr("data-type");
+	var from = $(this).attr("data-from");
+	var to = $(this).attr("data-to");	
+	var dlang = $(this).attr("data-dlang");	
+
+	$(this).attr("data-from",(from + to));
+	
+	$.post(AJAX_REQUEST_URL, { loadmore:true, t:type, f:from, t2:to, l:dlang },function(r){
+		if(r=="Empty"){
+			if(LANG=="ge"){
+				$(".loadmore").attr("href","javascript:void(0)").html("ჩანაწერი ვერ ნოიძებნა !");
+			}else{
+				$(".loadmore").attr("href","javascript:void(0)").html("Sorry, There is no more data !");
+			}
+		}else if(r=="Notin"){
+			if(LANG=="ge"){
+				$(".modal-title").html('შეტყობინება');
+				$(".modal-text").html('გთხოვთ გაიაროთ ავტორიზაცია !');
+			}else{
+				$(".modal-title").html('Message');
+				$(".modal-text").html('Please sign in !');
+			}
+			$("#message").modal('toggle');			
+		}else{
+			var obj = JSON.parse(r); 
+			var html = "";
+			for(var i = 0; i < obj.length; i++){
+				if(type=="usefulllinks"){
+					html += '<li><a href="'+obj[i].url+'" target="_blank">'+obj[i].title+'</a></li>';					
+				}else{
+					html += '<li><a href="'+WEBSITE+'/'+LANG+'/document?id='+obj[i].idx+'" target="_docs">'+obj[i].title+'</a></li>';
+				}
+			}
+			$(".epigraphy-list").append(html);
+		}
+	});
+});
 
 $(document).on("click","#update-profile", function(){
 	var namelname = $("#profile-namelname").val();
@@ -127,6 +184,12 @@ $(document).on("click",".notsigned",function(){
 		$(".modal-title").html('Message');
 		$(".modal-text").html('Please sign in !');
 	}
+	$("#message").modal('toggle');
+});
+
+$(document).on("click",".thumbnail",function(){
+	var image = $(this).attr("data-image");
+	$(".modal-text").html('<img src="'+image+'" alt="" width="100%" />');
 	$("#message").modal('toggle');
 });
 
@@ -175,6 +238,12 @@ $(document).on("click","#changepass-button",function(){
 		});
 	}
 });
+
+function submitme(e,hit_id){ 
+	if (e.keyCode == 13) {
+        $("#"+hit_id).click();
+    }
+}
 
 function remo(e){
 	$(".usersnavigation li").removeClass("active"); 

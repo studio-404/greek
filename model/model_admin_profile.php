@@ -7,7 +7,7 @@ class model_admin_profile extends connection{
 
 	public function selectAdminProfile($c){
 		$conn = $this->conn($c);
-		$sql = 'SELECT `namelname`,`email`, `phone`, `mobile` FROM `studio404_users` WHERE `username`=:username AND `status`!=:status';
+		$sql = 'SELECT `namelname`,`email`, `mobile` FROM `studio404_users` WHERE `username`=:username AND `status`!=:status';
 		$query = $conn->prepare($sql);
 		if (!$query) {
 			print_r($dbh->errorInfo());

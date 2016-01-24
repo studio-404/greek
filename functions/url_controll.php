@@ -40,8 +40,14 @@ class url_controll{
 			try{
 				$s = @explode("?",$actual_link);
 				$s = @explode("/", $s[0]);
-				if(is_array($s)){
+				if(is_array($s) && isset($s[$segment])){
 					return $s[$segment];
+				}else{
+					if($segment==2){
+						return "welcome";
+					}else if($segment==1){
+						return "ge";
+					}
 				}
 				
 			}catch(Exeption $e){

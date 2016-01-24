@@ -22,14 +22,13 @@
 					</li>
 					<li><a href="javascript:;"><i class="fa fa-cube"></i>&nbsp;&nbsp;&nbsp;Modules</a>
 						<ul>
-							<li><a href="?action=vectormap">Trade map</a></li>
-							<li><a href="?action=fusersstat">Front users & statements</a></li>
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=charts" : "javascript:;"?>">Google charts</a></li>
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=emailnewsletter" : "javascript:;"?>">Email newsletter</a></li>
-							
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=managedemails&token=".$_SESSION["token"] : "javascript:;"?>"><i class="fa fa-minus"></i> Manage email groups</a></li>
+							<!-- <li><a href="?action=vectormap">Trade map</a></li> -->
+							<!-- <li><a href="?action=fusersstat">Front users &amp; statements</a></li> -->
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=charts" : "javascript:;"?>">Google charts</a></li> -->
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=emailnewsletter" : "javascript:;"?>">Email newsletter</a></li> -->
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=managedemails&token=".$_SESSION["token"] : "javascript:;"?>"><i class="fa fa-minus"></i> Manage email groups</a></li> -->
 							<!-- <li><a href="?action=invoices">Invoices</a></li> -->
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=catalogMoreInfo" : "javascript:;"?>">Catalog more info</a></li>
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=catalogMoreInfo" : "javascript:;"?>">Catalog more info</a></li> -->
 							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=components" : "javascript:;"?>">Components</a></li>
 							<?php
 							foreach ($data["components"] as $v) {
@@ -44,19 +43,19 @@
 						<ul>
 							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=wuserList" : "javascript:;"?>">Website users</a></li>
 							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=userList" : "javascript:;"?>">Admin users</a></li>
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=userRights" : "javascript:;"?>">User right groups .??</a></li>
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=userRights" : "javascript:;"?>">User right groups .??</a></li> -->
 						</ul>
 					</li>
 					<li><a href="javascript:;"><i class="fa fa-cogs"></i>&nbsp;&nbsp;&nbsp;Settings</a>
 						<ul>
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=filemanager" : "javascript:;"?>">File manager</a></li>
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=filemanager" : "javascript:;"?>">File manager</a></li> -->
 							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=languages" : "javascript:;"?>">Languages</a></li>
 							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=languageData" : "javascript:;"?>"><i class="fa fa-minus"></i> Languages data</a></li>
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=websiteSettings" : "javascript:;"?>">Website settings</a></li>
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=exelator" : "javascript:;"?>">Exelator</a></li>
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=websiteSettings" : "javascript:;"?>">Website settings</a></li> -->
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=exelator" : "javascript:;"?>">Exelator</a></li> -->
 							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=textConverter" : "javascript:;"?>">Text converter</a></li>
 							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=log" : "javascript:;"?>">Log</a></li>
-							<li><a href="<?=(isset($_SESSION["user404"])) ? "?action=backup" : "javascript:;"?>">Backup</a></li>							
+							<!-- <li><a href="<?=(isset($_SESSION["user404"])) ? "?action=backup" : "javascript:;"?>">Backup</a></li>							 -->
 						</ul>
 					</li>
 					<?php 

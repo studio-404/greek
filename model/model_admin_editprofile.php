@@ -113,71 +113,28 @@ class model_admin_editprofile extends connection{
 
 	public function wedit($c){
 		$conn = $this->conn($c);
-		$namelname = strip_tags($_POST['namelname']);
-		$company_email = strip_tags($_POST['company_email']);
-		$products = strip_tags($_POST['products']);
-		$established_in = strip_tags($_POST['established_in']);
-		$number_of_employes = strip_tags($_POST['number_of_employes']);
-		$production_capacity = strip_tags($_POST['production_capacity']);
-		$certificates = strip_tags($_POST['certificates']);
-		$contact_person = strip_tags($_POST['contact_person']);
-		$email = strip_tags($_POST['email']);
-		$cp_email = strip_tags($_POST['cp_email']);
-		$cp_phone = strip_tags($_POST['cp_phone']);
-		$cp_mobile = strip_tags($_POST['cp_mobile']);
-		$office_phone = strip_tags($_POST['office_phone']);
-		$address = strip_tags($_POST['address']);
-		$web_address = strip_tags($_POST['web_address']);
-		$about = strip_tags($_POST['about']);
-		$token = $_GET['token'];
-		$token_get = $_GET["token"];
-		$token_session = $_SESSION["token"];
-		if( $this->noEmpty($namelname) && isset($_GET['id']) && $this->noEmpty($_GET['id']) && is_numeric($_GET['id']) && $token_get==$token_session){
-			$sql = 'UPDATE `studio404_users` SET 
-			`namelname`=:namelname, 
-			`company_email`=:company_email, 
-			`products`=:products, 
-			`established_in`=:established_in, 
-			`number_of_employes`=:number_of_employes, 
-			`production_capacity`=:production_capacity, 
-			`certificates`=:certificates, 
-			`contact_person`=:contact_person, 
-			`email`=:email, 
-			`cp_email`=:cp_email, 
-			`cp_phone`=:cp_phone, 
-			`cp_mobile`=:cp_mobile, 
-			`office_phone`=:office_phone, 
-			`address`=:address, 
-			`web_address`=:web_address, 
-			`about`=:about
-			WHERE 
-			`id`=:id AND 
-			`status`!=:status';
-			$query = $conn->prepare($sql);
-			$query->execute(array(
-			":namelname"=>$namelname,
-			":company_email"=>$company_email,
-			":products"=>$products,
-			":established_in"=>$established_in,
-			":number_of_employes"=>$number_of_employes,
-			":production_capacity"=>$production_capacity,
-			":certificates"=>$certificates, 
-			":contact_person"=>$contact_person, 
-			":email"=>$email, 
-			":cp_email"=>$cp_email, 
-			":cp_phone"=>$cp_phone, 
-			":cp_mobile"=>$cp_mobile, 
-			":office_phone"=>$office_phone, 
-			":address"=>$address, 
-			":web_address"=>$web_address, 
-			":about"=>$about, 
-			":id"=>$_GET['id'], 
-			":status"=>1 
-			));
-			$this->outMessage = 1;	
-		}else{
-			$this->outMessage = 2;
-		}
+		// $namelname = strip_tags($_POST['namelname']);
+		// $email = strip_tags($_POST['email']);
+		
+		// $token = $_GET['token'];
+		// $token_get = $_GET["token"];
+		// $token_session = $_SESSION["token"];
+		// if( $this->noEmpty($namelname) && isset($_GET['id']) && $this->noEmpty($_GET['id']) && is_numeric($_GET['id']) && $token_get==$token_session){
+		// 	$sql = 'UPDATE `studio404_users` SET 
+		// 	`namelname`=:namelname 
+		// 	WHERE 
+		// 	`id`=:id AND 
+		// 	`status`!=:status';
+		// 	$query = $conn->prepare($sql);
+		// 	$query->execute(array(
+		// 	":namelname"=>$namelname,
+		// 	":id"=>$_GET['id'], 
+		// 	":status"=>1 
+		// 	));
+		// 	$this->outMessage = 1;	
+		// }else{
+		// 	$this->outMessage = 2;
+		// }
 	}
 
 

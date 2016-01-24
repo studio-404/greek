@@ -3,8 +3,16 @@ class cache extends connection{
 
 	public function index($c,$type){
 		$get_slug_from_url = new get_slug_from_url();
+		
 		$slug = $get_slug_from_url->slug();
 		$slug_ = str_replace(array("/","\\"), array("",""), strip_tags(urlencode($slug))); 
+
+		if(Input::method("GET","slug")){
+			$slug_2 = str_replace(array("/","\\"), array("",""), strip_tags(urlencode(Input::method("GET","slug")))); 			
+		}else{	
+			$slug_2 = '';
+		}
+
 		if(Input::method("GET","i") && Input::method("GET","p")){
 			$proin = "proinside".Input::method("GET","p");
 		}else{ $proin = ""; }
@@ -20,7 +28,7 @@ class cache extends connection{
 			$sw = "sw".Input::method("GET","sw");
 		}else{ $sw = ""; }
 
-		$cache_file = "_cache/".$type.$proin.$partner.$slug_.$pn.$sw.LANG_ID.".json"; 
+		$cache_file = "_cache/".$type.$proin.$partner.$slug_.$slug_2.$pn.$sw.LANG_ID.".json"; 
 		if(file_exists($cache_file)){
 			$output = @file_get_contents($cache_file); 
 		}else{
@@ -36,6 +44,7 @@ class cache extends connection{
 			case "homepage_general": 
 			$get_slug_from_url = new get_slug_from_url();
 			$slug = $get_slug_from_url->slug();
+			//$slug = "welcome"; 
 			$sql = 'SELECT * FROM `studio404_pages` WHERE `slug`=:slug AND `lang`=:lang AND `visibility`!=:visibility AND `status`!=:status';	
 			$prepare = $conn->prepare($sql); 
 			$prepare->execute(array(
@@ -1158,7 +1167,7 @@ class cache extends connection{
 			$slug = $get_slug_from_url->slug();
 			$sql = 'SELECT 
 			`studio404_media_item`.`slug` AS smi_slug, 
-			`studio404_gallery`.`title` AS sg_title, 
+			`studio404_media_item`.`title` AS sg_title, 
 			(
 				SELECT 
 				`studio404_gallery_file`.`file` 
@@ -1216,8 +1225,16 @@ class cache extends connection{
 			$fetch = $prepare->fetchAll(PDO::FETCH_ASSOC); 
 			break; 
 			case "files_":
-			$get_slug_from_url = new get_slug_from_url();
-			$slug = $get_slug_from_url->slug();
+			// $get_slug_from_url = new get_slug_from_url();
+			// $slug = $get_slug_from_url->slug();
+			if(Input::method("GET","slug")){
+				$slug = Input::method("GET","slug");
+			}else{
+				$cache = new cache();
+				$photo_gallery_list = $cache->index($c,"photo_gallery_list");
+				$data["photo_gallery_list"] = json_decode($photo_gallery_list); 
+				$slug = $data["photo_gallery_list"][0]->smi_slug;
+			}
 			$sql = 'SELECT 
 			`studio404_gallery_file`.* 
 			FROM 

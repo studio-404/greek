@@ -1,0 +1,3 @@
+User-agent:*
+Disallow:/superadmin_/
+sitemap: http://greekepigraphy.ge/sitemap.php

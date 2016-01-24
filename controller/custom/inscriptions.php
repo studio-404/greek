@@ -1,5 +1,5 @@
 <?php if(!defined("DIR")){ exit(); }
-class epigraphy extends connection{
+class inscriptions extends connection{
 	function __construct($c){
 		$this->template($c,"epigraphy");
 	}

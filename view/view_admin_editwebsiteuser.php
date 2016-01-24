@@ -51,94 +51,18 @@
 					<label for="username">Username: <font color="RED">*</font></label>
 					<input type="text" name="username" id="username" value="<?=htmlentities($data["profile"]["username"])?>" autocomplete="off" disabled="disabled">
 
-					<label for="company_type">Company type: <font color="RED">*</font></label>
-					<select name="company_type" class="company_type" disabled="disabled">
-						<option value="">Choose</option>
-						<option value="individual" <?=($data["profile"]["company_type"]=="individual") ? 'selected="selected"' : ''?>>Individual</option>
-						<option value="manufacturing" <?=($data["profile"]["company_type"]=="manufacturing") ? 'selected="selected"' : ''?>>Manufacturing</option>
-					</select>
-						
-					<label for="namelname">Company name: <font color="RED">*</font></label>
-					<input type="text" name="namelname" id="namelname" value="<?=htmlentities($data["profile"]["namelname"])?>" autocomplete="off">
+					<label for="namelname">Firstname Lastname: <font color="RED">*</font></label>
+					<input type="text" name="namelname" id="namelname" value="<?=htmlentities($data["profile"]["namelname"])?>" autocomplete="off" disabled="disabled">
 
-					<label for="email">Company email:</label>
-					<input type="text" name="email" id="email" value="<?=htmlentities($data["profile"]["email"])?>" autocomplete="off">
+					<label for="gender">Gender: <font color="RED">*</font></label>
+					<input type="text" name="gender" id="gender" value="<?=htmlentities($data["profile"]["gender"])?>" autocomplete="off" disabled="disabled">
 
-					<?php
-					if($data["profile"]["company_type"]=="manufacturing"){
-					?>
+					<label for="email">Email:</label>
+					<input type="text" name="email" id="email" value="<?=htmlentities($data["profile"]["email"])?>" autocomplete="off" disabled="disabled">
 
-					<label for="sector">Sector: </label>
-					<select name="sector_id" id="sector" disabled="disabled"><option value="<?=htmlentities($data["profile"]["sector_id"])?>"><?=htmlentities($data["profile"]["sector_id"])?></option></select>
-
-					<label for="subsector">Sub sector: </label>
-					<select name="sub_sector_id" id="subsector" disabled="disabled"><option value="<?=htmlentities($data["profile"]["sub_sector_id"])?>"><?=htmlentities($data["profile"]["sub_sector_id"])?></option></select>
-
-					<label for="products">Products: </label>
-					<input type="text" name="products" id="products" value="<?=htmlentities($data["profile"]["products"])?>" autocomplete="off">
-
-					<label for="established_in">Established in: </label>
-					<input type="text" name="established_in" id="established_in" value="<?=htmlentities($data["profile"]["established_in"])?>" autocomplete="off">
-
-					<label for="number_of_employes">Number of employes: </label>
-					<input type="text" name="number_of_employes" id="number_of_employes" value="<?=htmlentities($data["profile"]["number_of_employes"])?>" autocomplete="off">
-
-					<label for="sme_classification">SME classification: </label>
-					<select name="sme_classification_id" id="sme_classification" disabled="disabled"><option value="<?=htmlentities($data["profile"]["sme_classification_id"])?>"><?=$data["profile"]["sme_classification_id"]?></option></select>
-
-					<label for="production_capacity">Production capacity: </label>
-					<input type="text" name="production_capacity" id="production_capacity" value="<?=htmlentities($data["profile"]["production_capacity"])?>" autocomplete="off">
-
-					<label for="certificates">Certificates: </label>
-					<input type="text" name="certificates" id="certificates" value="<?=htmlentities($data["profile"]["certificates"])?>" autocomplete="off">
-
-					<label for="export_markets">Export markets: </label>
-					<select name="export_markets_id" id="export_markets" disabled="disabled"><option value="<?=htmlentities($data["profile"]["export_markets_id"])?>"><?=$data["profile"]["export_markets_id"]?></option></select>
-
-					<label for="address">Address: </label>
-					<input type="text" name="address" id="address" value="<?=htmlentities($data["profile"]["address"])?>" autocomplete="off">
-
-					<label for="contact_person">Contact person: </label>
-					<input type="text" name="contact_person" id="contact_person" value="<?=htmlentities($data["profile"]["contact_person"])?>" autocomplete="off">
-
-					<label for="cp_email">Person email: </label>
-					<input type="text" name="cp_email" id="cp_email" value="<?=htmlentities($data["profile"]["cp_email"])?>" autocomplete="off">
-
-					<label for="cp_phone">Person phone: </label>
-					<input type="text" name="cp_phone" id="cp_phone" value="<?=htmlentities($data["profile"]["cp_phone"])?>" autocomplete="off" />
-
-					<label for="cp_mobile">Person mobile: </label>
-					<input type="text" name="cp_mobile" id="cp_mobile" value="<?=htmlentities($data["profile"]["cp_mobile"])?>" autocomplete="off" />
-
-					<label for="office_phone">Office phone: </label>
-					<input type="text" name="office_phone" id="office_phone" value="<?=htmlentities($data["profile"]["office_phone"])?>" autocomplete="off" />
-
-					<label for="web_address">Web address:</label>
-					<input type="text" name="web_address" id="web_address" value="<?=htmlentities($data["profile"]["web_address"])?>" autocomplete="off">
-
-					<label for="about">About: <font color="RED">*</font></label>
-					<textarea name="about" class="tinyMce"><?=htmlentities($data["profile"]["about"])?></textarea>
-					<?php }else if($data["profile"]["company_type"]=="individual"){ ?>
-
-					<label for="address">Address:</label>
-					<input type="text" name="address" id="address" value="<?=htmlentities($data["profile"]["address"])?>" autocomplete="off" />
-
-					<label for="contact_person">Contact person: </label>
-					<input type="text" name="contact_person" id="contact_person" value="<?=htmlentities($data["profile"]["contact_person"])?>" autocomplete="off" />
-
-					<label for="cp_email">Person email: </label>
-					<input type="text" name="cp_email" id="cp_email" value="<?=htmlentities($data["profile"]["cp_email"])?>" autocomplete="off" />
-
-					<label for="cp_phone">Person phone: </label>
-					<input type="text" name="cp_phone" id="cp_phone" value="<?=htmlentities($data["profile"]["cp_phone"])?>" autocomplete="off" />
-
-					<label for="cp_mobile">Person mobile: </label>
-					<input type="text" name="cp_mobile" id="cp_mobile" value="<?=htmlentities($data["profile"]["cp_mobile"])?>" autocomplete="off" />
-
-					<label for="web_address">Web address:</label>
-					<input type="text" name="web_address" id="web_address" value="<?=htmlentities($data["profile"]["web_address"])?>" autocomplete="off" />
-					<?php } ?>
-
+					<label for="mobile">Contact Number:</label>
+					<input type="text" name="mobile" id="mobile" value="<?=htmlentities($data["profile"]["mobile"])?>" autocomplete="off" disabled="disabled">
+					
 					<input type="submit" name="edit_website_user" id="submit" value="Submit"><br>
 				</form>
 			</div>

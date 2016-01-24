@@ -51,7 +51,7 @@ class edit_page_interface extends connection{
 			$this->out[1] .= $this->content_form($fetch);
 			$this->out[1] .= '</div>';
 			$this->out[1] .= '<div id="tabs-3">';
-			$this->out[1] .= $this->content_images($fetch2,$c);
+			$this->out[1] .= $this->content_images($fetch,$c);
 			$this->out[1] .= '</div>';
 			$this->out[1] .= '<div id="tabs-4">';
 			$this->out[1] .= $this->content_files($fetch,$c);
@@ -813,6 +813,7 @@ class edit_page_interface extends connection{
 	}
 
 	public function content_form_gallery($fetch){
+		$out = '';
 		$out .= '<label>Description: </label>';
 		$out .= '<textarea name="description" class="tinyMce">'.htmlentities($fetch['smi_description']).'</textarea>';
 		return $out;
@@ -977,7 +978,7 @@ class edit_page_interface extends connection{
 		$out = '<div class="button makeFileDragable2" style="background-color:green; float:left">
 					<a href="#" style="color:white"><i class="fa fa-arrows"></i><span id="dragText2">Start sorting</span> </a>
 				</div>';	
-		if($_GET["type"]=='videogallerypage'){
+		if(isset($_GET["type"]) && $_GET["type"]=='videogallerypage'){
 			$out .= '<div class="button addYtVideo" style="background-color:green; float:left; margin-left:10px;">
 					<a href="#" style="color:white"><i class="fa fa-plus"></i><span id="dragText2">Add youtube video</span> </a>
 				</div>';	

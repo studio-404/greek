@@ -5,7 +5,7 @@ class get_slug_from_url {
 		$removeQ = explode("?",$actual_link);
 		$r = WEBSITE.LANG."/";
 		$slug = explode($r,$removeQ[0]); 
-		if(empty($slug[1])){ $out="home"; }
+		if(empty($slug[1])){ $out="welcome"; }
 		else{ $out = $slug[1]; }
 		return $out;
 	}

@@ -5,9 +5,9 @@
 
 	<div class="content_div">
 		 <div class="content_title_2"><?=$data["homepage_general"][0]->title?></div>
+		 <strong><?=$data["language_data"]["val121"]?>.</strong><br /><br />
 		 <div class="contact_div">
-
-		 	<?php
+			<?php
 		 	foreach ($data["components"] as $val) : 
 		 		if($val->com_name != "Contact info"){ continue; }
 		 	?>
@@ -24,9 +24,9 @@
 			?>
 			
 			<div class="contact_map">
-				<div class="title">მოგვძებნე რუკაზე</div>
+				<!-- <div class="title">მოგვძებნე რუკაზე</div> -->
 				<div class="map_iframe">
-					<!-- <img src="img/map.png"> -->
+					<iframe src="https://www.google.com/maps/d/u/2/embed?mid=zAfHtFft4XFk.kBcmeDnGfGeg&amp;z=18" width="100%" height="380" style="height:380px" frameborder="0"></iframe>
 				</div>
 			</div>
 		 </div>

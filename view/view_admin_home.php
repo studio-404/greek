@@ -109,55 +109,51 @@
 							<span class="cell primary">Usefull links</span>
 							<span class="cell">Action</span>
 						</div>
+
+						<div class="row">
+							<span class="cell primary" data-label="Vehicle">Main Page Slider</span>
+							<span class="cell" data-label="Action">
+								<?php $_SESSION["token"] = md5(sha1(time())); ?>
+								<a href="?action=componentModule&amp;id=6&amp;token=<?=$_SESSION["token"]?>"><i class="fa fa-pencil-square-o"></i></a>
+							</span>
+						</div>
+
 						<div class="row">
 							<span class="cell primary" data-label="Vehicle">User lists</span>
 							<span class="cell" data-label="Action">
-								<a href="?action=fusersstat&amp;load=users"><i class="fa fa-pencil-square-o"></i></a>
+								<a href="?action=wuserList"><i class="fa fa-pencil-square-o"></i></a>
 							</span>
 						</div>
+						
+
 						<div class="row">
-							<span class="cell primary" data-label="Vehicle">Product list</span>
+							<span class="cell primary" data-label="Vehicle">Inscriptions</span>
 							<span class="cell" data-label="Action">
-								<a href="?action=fusersstat&amp;load=products"><i class="fa fa-pencil-square-o"></i></a>
+								<a href="?action=componentModule&amp;id=8&amp;token=<?=$_SESSION["token"]?>"><i class="fa fa-pencil-square-o"></i></a>
 							</span>
 						</div>
+
 						<div class="row">
-							<span class="cell primary" data-label="Vehicle">Service list</span>
+							<span class="cell primary" data-label="Vehicle">Usefull Links</span>
 							<span class="cell" data-label="Action">
-								<a href="?action=fusersstat&amp;load=services"><i class="fa fa-pencil-square-o"></i></a>
+								<a href="?action=componentModule&amp;id=9&amp;token=<?=$_SESSION["token"]?>"><i class="fa fa-pencil-square-o"></i></a>
 							</span>
 						</div>
+
 						<div class="row">
-							<span class="cell primary" data-label="Vehicle">Enquire list</span>
+							<span class="cell primary" data-label="Vehicle">Contact Info</span>
 							<span class="cell" data-label="Action">
-								<a href="?action=fusersstat&amp;load=enquires"><i class="fa fa-pencil-square-o"></i></a>
+								<a href="?action=componentModule&amp;id=7&amp;token=<?=$_SESSION["token"]?>"><i class="fa fa-pencil-square-o"></i></a>
 							</span>
 						</div>
-						<div class="row">
-							<span class="cell primary" data-label="Vehicle">Events</span>
-							<span class="cell" data-label="Action">
-								<a href="?action=newsModule&amp;type=eventpage&amp;id=16&amp;super=1&amp;token=<?=$_SESSION["token"]?>"><i class="fa fa-pencil-square-o"></i></a>
-							</span>
-						</div>
-						<div class="row">
-							<span class="cell primary" data-label="Vehicle">News</span>
-							<span class="cell" data-label="Action">
-								<a href="?action=newsModule&amp;type=newspage&amp;id=17&amp;super=1&amp;token=<?=$_SESSION["token"]?>"><i class="fa fa-pencil-square-o"></i></a>
-							</span>
-						</div>
-						<div class="row">
-							<span class="cell primary" data-label="Vehicle">Users to exel doc</span>
-							<span class="cell" data-label="Action">
-								<a href="?action=exelator&amp;load=template_users&amp;usertype=manufacturer"><i class="fa fa-pencil-square-o"></i></a>
-							</span>
-						</div>
+						
 					</div>
 				</div>
 
 				<div class="shortTable">
 					<div id="table">
 						<div class="header-row row">
-							<span class="cell primary">Settings & tools</span>
+							<span class="cell primary">Settings &amp; tools</span>
 							<span class="cell">Action</span>
 						</div>
 						<div class="row">

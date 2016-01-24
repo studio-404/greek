@@ -94,7 +94,14 @@ class model_admin_breadcrups extends connection{
 				case "weditprofile":
 				$this->breadcrups .= '<a href="?action=wuserList">Website users <i class="fa fa-caret-right"></i></a>';
 				$getadminname = $this->getadminname($c);
-				$this->breadcrups .= '<a href="?action=weditprofile&id='.$_GET['id'].'&token='.$_SESSION['token'].'">'.$getadminname.' <i class="fa fa-caret-right"></i></a>';
+				if(isset($_SESSION['token'])){ 
+					$token = $_SESSION['token']; 
+				}
+				else
+				{ 
+					$token = ""; 
+				}
+				$this->breadcrups .= '<a href="?action=weditprofile&id='.$_GET['id'].'&token='.$token.'">'.$getadminname.' <i class="fa fa-caret-right"></i></a>';
 				break;
 
 				case "userRights":

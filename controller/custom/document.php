@@ -16,7 +16,7 @@ class document extends connection{
 				exit();
 			}
 		}
-		$sql = 'SELECT `file` FROM `studio404_gallery_file` WHERE `idx`=:idx AND `lang`=:lang';
+		$sql = 'SELECT `document` FROM `studio404_components_inside` WHERE `idx`=:idx AND `lang`=:lang';
 		$prepare = $conn->prepare($sql); 
 		$prepare->execute(array(
 			":idx"=>$idx, 
@@ -25,7 +25,7 @@ class document extends connection{
 		if($prepare->rowCount() > 0){
 			$fetch = $prepare->fetch(PDO::FETCH_ASSOC); 
 			
-			$file = $fetch["file"]; 
+			$file = $fetch["document"]; 
 			if(file_exists($file)){
 				$content = file_get_contents($file);
 				$name = time().".pdf";

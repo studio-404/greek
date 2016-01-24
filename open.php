@@ -1,12 +1,14 @@
 <?php 
 session_start();
+session_name("greekepigraphy");
+// error_reporting(0);
 ini_set('display_errors', 1);
 /*check last activity*/
 if (!isset($_SESSION['CREATED'])) {
     $_SESSION['CREATED'] = time();
 } else if (time() - $_SESSION['CREATED'] > 1800) {
     // session started more than 30 minutes ago
-    session_regenerate_id(true);    // change session ID for the current session and invalidate old session ID
+    //session_regenerate_id(true);    // change session ID for the current session and invalidate old session ID
     $_SESSION['CREATED'] = time();  // update creation time
 }
  
@@ -16,8 +18,8 @@ header("Content-type: text/html; charset=utf-8");
 
 $dir_explode = explode("open.php",__FILE__);
 define("DIR",$dir_explode[0]);
-define("WEBSITE","http://greek.404.ge/");
-define("WEBSITE_","http://greek.404.ge");
+define("WEBSITE","http://greekepigraphy.ge/");
+define("WEBSITE_","http://greekepigraphy.ge");
 define('START_TIME', microtime(TRUE));
 define('START_MEMORY', memory_get_usage());
 define('PLUGINS', WEBSITE.'_plugins/');
@@ -88,8 +90,9 @@ $LANG = $obj->url("segment",$c['site.language.slash.position']);
 // }
 
 if(empty($LANG)){ // just domain name
-	$redirect = new redirect();
-	$redirect->go(WEBSITE.$c['main.language']."/".$c["welcome.page.slug"]); 
+	// $redirect = new redirect();
+	// $redirect->go(WEBSITE.$c['main.language']."/".$c["welcome.page.slug"]); 
+	$LANG = $c['main.language'];
 }else if(!in_array($LANG, $c['languages.array']) && $LANG != "image" && $LANG!=$c['admin.slug']){
 	$welcome_class = $c["welcome.page.slug"];
 	$main_language = $c['main.language'];

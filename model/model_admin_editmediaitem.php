@@ -16,7 +16,7 @@ class model_admin_editmediaitem extends connection{
 		){
 
 			$visibility = ($_POST['visibility']=="true") ? 2 : 1;
-			echo $visibility;
+			//echo $visibility;
 			// update main columns
 			$sql = 'UPDATE `studio404_media_item` SET 
 			`title`=:smi_title, 

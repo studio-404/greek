@@ -98,17 +98,17 @@ class admin extends connection{
 				$data["user_rights"] = $model_admin_userrights->select_userright($c);
 
 				@include("view/view_admin_editAdminRights.php");
-			}else if($_GET['action']=="log"){
+			}else if(isset($_GET['action']) && $_GET['action']=="log"){
 				$data["website_title"] = "Logs / Admin Panel - v: ".$c['cmsversion'];
 				$model_admin_logs = new model_admin_logs();
 				$admin_logs = $model_admin_logs->select_admin_logs($c);
 				$data['table'] = $admin_logs['table'];
 				$data['pager'] = $admin_logs['pager'];
 				@include("view/view_admin_log.php");
-			}else if($_GET['action']=="textConverter"){
+			}else if(isset($_GET['action']) && $_GET['action']=="textConverter"){
 				$data["website_title"] = "Text converter / Admin Panel - v: ".$c['cmsversion'];
 				@include("view/view_admin_textconverter.php");
-			}else if($_GET['action']=="menuManagment"){
+			}else if(isset($_GET['action']) && $_GET['action']=="menuManagment"){
 				$data["website_title"] = "Page managment/ Admin Panel - v: ".$c['cmsversion'];
 				$model_admin_selectLanguage = new model_admin_selectLanguage();
 				$data["language_select"] = $model_admin_selectLanguage->select_option($c);
@@ -516,56 +516,56 @@ class admin extends connection{
 
 				@include("view/view_admin_addComments.php");
 			}else if(isset($action) && $action=="fusersstat"){
-				$data["website_title"] = "Front users & statements  / Admin Panel - v: ".$c['cmsversion'];
-				$model_admin_selectLanguage = new model_admin_selectLanguage();
-				$data["language_select"] = $model_admin_selectLanguage->select_option($c);
-				$model_admin_fusersstat = new model_admin_fusersstat();
+				// $data["website_title"] = "Front users & statements  / Admin Panel - v: ".$c['cmsversion'];
+				// $model_admin_selectLanguage = new model_admin_selectLanguage();
+				// $data["language_select"] = $model_admin_selectLanguage->select_option($c);
+				// $model_admin_fusersstat = new model_admin_fusersstat();
 
-				if(isset($_GET['remove'],$_GET['rmid'],$_GET['load']) && $_GET['remove']=="true" && is_numeric($_GET['rmid'])){
-					$true = false;
-					if($_GET['load']=="users"){
-						$true = $model_admin_fusersstat->removeMe($c,'users');
-						$url = WEBSITE.LANG.'/'.ADMIN_SLUG.'?action=fusersstat&load=users';
-					}else if($_GET['load']=="products"){
-						$true = $model_admin_fusersstat->removeMe($c,'products');	
-						$url = WEBSITE.LANG.'/'.ADMIN_SLUG.'?action=fusersstat&load=products';
-					}else if($_GET['load']=="services"){
-						$true = $model_admin_fusersstat->removeMe($c,'services');	
-						$url = WEBSITE.LANG.'/'.ADMIN_SLUG.'?action=fusersstat&load=services';
-					}else if($_GET['load']=="enquires"){
-						$true = $model_admin_fusersstat->removeMe($c,'enquires');	
-						$url = WEBSITE.LANG.'/'.ADMIN_SLUG.'?action=fusersstat&load=enquires';
-					}
+				// if(isset($_GET['remove'],$_GET['rmid'],$_GET['load']) && $_GET['remove']=="true" && is_numeric($_GET['rmid'])){
+				// 	$true = false;
+				// 	if($_GET['load']=="users"){
+				// 		$true = $model_admin_fusersstat->removeMe($c,'users');
+				// 		$url = WEBSITE.LANG.'/'.ADMIN_SLUG.'?action=fusersstat&load=users';
+				// 	}else if($_GET['load']=="products"){
+				// 		$true = $model_admin_fusersstat->removeMe($c,'products');	
+				// 		$url = WEBSITE.LANG.'/'.ADMIN_SLUG.'?action=fusersstat&load=products';
+				// 	}else if($_GET['load']=="services"){
+				// 		$true = $model_admin_fusersstat->removeMe($c,'services');	
+				// 		$url = WEBSITE.LANG.'/'.ADMIN_SLUG.'?action=fusersstat&load=services';
+				// 	}else if($_GET['load']=="enquires"){
+				// 		$true = $model_admin_fusersstat->removeMe($c,'enquires');	
+				// 		$url = WEBSITE.LANG.'/'.ADMIN_SLUG.'?action=fusersstat&load=enquires';
+				// 	}
 
-					if($true){
-						redirect::url($url);
-					}
-				}
-				$db_counter = new db_counter();
-				$data["user_count"] = $db_counter->sq($c,'`id`','`studio404_users`','`user_type`="website" AND `status`!=1'); 
-				$data["product_count"] = $db_counter->sq($c,'`id`','`studio404_module_item`','`module_idx`=3 AND `status`!=1'); 
-				$data["service_count"] = $db_counter->sq($c,'`id`','`studio404_module_item`','`module_idx`=4 AND `status`!=1'); 
-				$data["enquire_count"] = $db_counter->sq($c,'`id`','`studio404_module_item`','`module_idx`=5 AND `status`!=1'); 
+				// 	if($true){
+				// 		redirect::url($url);
+				// 	}
+				// }
+				// $db_counter = new db_counter();
+				// $data["user_count"] = $db_counter->sq($c,'`id`','`studio404_users`','`user_type`="website" AND `status`!=1'); 
+				// $data["product_count"] = $db_counter->sq($c,'`id`','`studio404_module_item`','`module_idx`=3 AND `status`!=1'); 
+				// $data["service_count"] = $db_counter->sq($c,'`id`','`studio404_module_item`','`module_idx`=4 AND `status`!=1'); 
+				// $data["enquire_count"] = $db_counter->sq($c,'`id`','`studio404_module_item`','`module_idx`=5 AND `status`!=1'); 
 				
 				
-				if(isset($_GET["load"]) && $_GET["load"]=="products"){
-					$data["active"] = "products";
-					$outbox = $model_admin_fusersstat->get_products($c);
-				}else if(isset($_GET["load"]) && $_GET["load"]=="services"){
-					$data["active"] = "services";
-					$outbox = $model_admin_fusersstat->get_services($c);
-				}else if(isset($_GET["load"]) && $_GET["load"]=="enquires"){
-					$data["active"] = "enquires";
-					$outbox = $model_admin_fusersstat->get_enquires($c);
-				}else{
-					$data["active"] = "users";
-					$outbox = $model_admin_fusersstat->get_users($c);
-				}
+				// if(isset($_GET["load"]) && $_GET["load"]=="products"){
+				// 	$data["active"] = "products";
+				// 	$outbox = $model_admin_fusersstat->get_products($c);
+				// }else if(isset($_GET["load"]) && $_GET["load"]=="services"){
+				// 	$data["active"] = "services";
+				// 	$outbox = $model_admin_fusersstat->get_services($c);
+				// }else if(isset($_GET["load"]) && $_GET["load"]=="enquires"){
+				// 	$data["active"] = "enquires";
+				// 	$outbox = $model_admin_fusersstat->get_enquires($c);
+				// }else{
+				// 	$data["active"] = "users";
+				// 	$outbox = $model_admin_fusersstat->get_users($c);
+				// }
 
-				$data['table'] = $outbox['table'];
-				$data['pager'] = $outbox['pager'];
+				// $data['table'] = $outbox['table'];
+				// $data['pager'] = $outbox['pager'];
 
-				@include("view/view_admin_fusersstat.php");
+				// @include("view/view_admin_fusersstat.php");
 			}else if(isset($action) && $action=="edituserstats"){
 				$data["website_title"] = "Edit users statement / Admin Panel - v: ".$c['cmsversion'];
 				$model_admin_selectLanguage = new model_admin_selectLanguage();

@@ -19,19 +19,15 @@
 
 	<div class="content_div">
 		 <div class="content_title_2"><?=$data["homepage_general"][0]->title?></div>
-		 <div class="lists_div file_bg download_icon">
+		 <div class="lists_div link_bg">
 		 	<ul style="margin:0; padding:0; list-style-type:none" class="epigraphy-list">
 		 	<?php
 		 	$x = 1;
 		 	$limit = 5;
 		 	foreach ($data["components"] as $value) {
-		 		if($value->com_name != "inscriptions"){ continue; }
+		 		if($value->com_name != "Usefull links"){ continue; }
 		 		if($x>$limit){ break; }
-		 		if(!isset($_SESSION["greek_id"])){
-		 			echo '<li><a href="javascript:void(0)" class="notsigned">'.$value->title.'</a></li>';
-		 		}else{
-		 			echo '<li><a href="'.WEBSITE.LANG.'/document?id='.(int)$value->idx.'" target="_docs">'.$value->title.'</a></li>';
-		 		}
+		 		echo '<li><a href="'.$value->url.'" target="_blank">'.$value->title.'</a></li>';
 		 		$x++;
 		 	}
 		 	?>
@@ -42,7 +38,7 @@
 		//echo $x;
 		if($x == ($limit+1)) : ?>
 		<div class="show_more_list">
-			<a href="javascript:void(0)" class="loadmore" data-type="epigraphy" data-dlang="<?=LANG_ID?>" data-from="<?=$limit?>" data-to="10"><?=$data["language_data"]["val120"]?></a>
+			<a href="javascript:void(0)" class="loadmore" data-type="usefulllinks" data-dlang="<?=LANG_ID?>" data-from="<?=$limit?>" data-to="10"><?=$data["language_data"]["val120"]?></a>
 		</div>
 		<?php endif; ?>
 	</div>

@@ -13,7 +13,8 @@ class model_admin_vectormap extends connection{
 		}else{ $search='a'; $search_in = ' AND `id`!=:search ';  }
 			//page type
 			$get_page_type = new get_page_type();
-			$page_type = $get_page_type->type($_SESSION["C"],$_GET['id']);
+			$getid = (isset($_GET['id'])) ? $_GET['id'] : 0;
+			$page_type = $get_page_type->type($_SESSION["C"],$getid);
 			$sql = 'SELECT `idx`,`title`, `code` FROM `studio404_vectormap` WHERE `lang`=:lang '.$search_in.' ORDER BY `title` ASC';
 
 			$exe_array = array(

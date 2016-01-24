@@ -65,7 +65,7 @@ class model_admin_select extends connection{
 				$out .= '<div class="row">';
 				$out .= '<span class="cell primary"><a href="?action=editprofile&id='.$rows['id'].'&token='.$_SESSION['token'].'" title="Edit user info">'.$rows['namelname'].'</a></span>';
 				$out .= '<span class="cell">'.$rows['username'].'</span>';
-				$out .= '<span class="cell">'.$rows['ucode'].'</span>';
+				$out .= '<span class="cell">&nbsp;</span>';
 				$out .= '<span class="cell">'.$rows['user_type'].'</span>';
 				$out .= '<span class="cell">'.$logtime.'</span>';
 				$out .= '<span class="cell">
@@ -98,8 +98,8 @@ class model_admin_select extends connection{
 				$out .= '<span class="cell primary"><a href="'.htmlentities($link_visibility).'" style="color:'.$visibilityx.'" title="Change visibility"><i class="fa fa-dot-circle-o"></i></a></span>';
 				$out .= '<span class="cell primary"><a href="?action=weditprofile&id='.$rows['id'].'&token='.$_SESSION['token'].'" title="Edit user info">'.$rows['namelname'].'</a></span>';
 				$out .= '<span class="cell">'.$rows['username'].'</span>';
-				$out .= '<span class="cell">'.$rows['ucode'].'</span>';
-				$out .= '<span class="cell">'.$rows['company_type'].'</span>';
+				$out .= '<span class="cell">&nbsp;</span>';
+				$out .= '<span class="cell">&nbsp;</span>';
 				$out .= '<span class="cell">'.$logtime.'</span>';
 				$out .= '<span class="cell">
 						<a href="?action=weditprofile&id='.$rows['id'].'&token='.$_SESSION['token'].'" title="Edit user info"><i class="fa fa-pencil-square-o"></i></a>
