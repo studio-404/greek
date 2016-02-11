@@ -4,12 +4,22 @@
 <div class="container">
 
 	<div class="content_div">
-		 <div class="content_title_2"><?=$data["homepage_general"][0]->title?></div>
-		 <strong><?=$data["language_data"]["val121"]?>.</strong><br /><br />
+		<div class="content_title_2"><?=$data["homepage_general"][0]->title?></div>
+		<?php
+	 	foreach ($data["components"] as $val) : 
+	 	if($val->com_name != "Contact info"){ continue; }
+	 	if($val->title != "Main text" && $val->title != "მთავარი ტექსტი"){ continue; }
+	 	?>
+		 <strong><?=strip_tags($val->desc,"<br>")?>.</strong><br /><br />
+		<?php
+		endforeach;
+		?>
+		 
 		 <div class="contact_div">
 			<?php
 		 	foreach ($data["components"] as $val) : 
 		 		if($val->com_name != "Contact info"){ continue; }
+		 		if($val->title == "Main text" || $val->title == "მთავარი ტექსტი"){ continue; }
 		 	?>
 			<div class="col-sm-12 padding_0">
 				 <div class="col-sm-3 padding_0">

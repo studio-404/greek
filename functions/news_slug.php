@@ -6,7 +6,8 @@ class news_slug extends connection{
 
 	public function slug($c){
 		$conn = $this->conn($c);
-		$idx = (isset($_GET['newsidx'])) ? $_GET['newsidx'] : $_GET['catalogidx']; 
+		$idx = (isset($_GET['newsidx'])) ? $_GET['newsidx'] : ""; 
+		$idx = (isset($_GET['catalogidx'])) ? $_GET['catalogidx'] : ""; 
 		$idx = (isset($_GET["mediaidx"])) ? $_GET["mediaidx"] : $idx;
 		$sql = 'SELECT `slug` FROM `studio404_pages` WHERE `idx`=:idx AND `lang`=:lang AND `status`!=:status';
 		$prepare = $conn->prepare($sql);

@@ -39,6 +39,7 @@ class inscriptions extends connection{
 		/* components */
 		$components = $cache->index($c,"components");
 		$data["components"] = json_decode($components); 
+		
 		$include = WEB_DIR."/epigraphy.php";
 		if(file_exists($include)){
 			@include($include);

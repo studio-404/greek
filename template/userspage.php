@@ -1,6 +1,35 @@
 <?php 
 	@include("parts/header.php"); 
 ?>
+<!-- START POPUP -->
+<div id="message" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+		<div class="modal-body" id="modal_containerx">
+			<h3 class="modal-title"><?=$data["language_data"]["val122"]?></h3>
+			<div class="modal-text" style="margin-top:10px;">
+				<font color="red" id="recover-status" style="display:none; margin-bottom:10px; float:left;"></font>
+				<div style="clear:both"></div>
+				<div class="form-group">
+					<label><?=$data["language_data"]["val41"]?>:</label>
+					<input type="text" id="recover-username" class="form_1" value="" onkeypress="submitme(event,'recover-pass-button')">
+					<div style="clear:both"></div>
+					<i style="font-size:12px; margin:10px 0; float:left">
+						<?=$data["language_data"]["val123"]?> 
+						<a href="<?=WEBSITE.LANG?>/contact"><?=$data["language_data"]["val125"]?></a>
+					</i>
+				</div>
+				<div class="form-group" style="clear:both"> 
+					<input type="submit" value="<?=$data["language_data"]["val124"]?>" id="recover-pass-button" class="button_1">
+				</div>
+
+			</div>
+		</div> 
+    </div>
+  </div>
+</div>
+<!-- END POPUP -->
 <div class="container">
 	
 	<div class="content_div">
@@ -50,6 +79,9 @@
 					</div>
 					<div class="form-group"> 
 						<input type="submit" value="<?=$data["language_data"]["val100"]?>" id="login-button" class="button_2"/>
+					</div>
+					<div class="form-group"> 
+						<a href="javascript:;" onclick="$('#message').modal('show')" style="color:#6d659e"><?=$data["language_data"]["val122"]?></a>
 					</div>
 				</div>
 			</div>

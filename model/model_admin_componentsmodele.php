@@ -116,17 +116,19 @@ class model_admin_componentsmodele extends connection{
 
 		$background = '';
 		if(isset($_POST['background'])){
-			$expl = explode("/",$_POST['background']);				
-			$from = DIR.$expl[1]."/".end($expl);
-			$To = DIR.'files/background/'.end($expl);
-			if(file_exists($from)){	
-				if(@copy($from,$To)){
-					@unlink($from);
-					$background = explode(DIR,$To);
-					$background = "/".$background[1];
+			$expl = explode("/",$_POST['background']);			
+			if(isset($expl[1])){
+				$from = DIR.$expl[1]."/".end($expl);
+				$To = DIR.'files/background/'.end($expl);
+				if(file_exists($from)){	
+					if(@copy($from,$To)){
+						@unlink($from);
+						$background = explode(DIR,$To);
+						$background = "/".$background[1];
 
+					}
 				}
-			}				
+			}
 		}
 
 		$documentsx = "";
@@ -281,6 +283,12 @@ class model_admin_componentsmodele extends connection{
 			":status"=>1, 
 			":comid"=>$componentID
 		));
+
+		$files = glob(DIR.'_cache/*'); // get all file names
+		foreach($files as $file){ // iterate files
+			if(is_file($file))
+			@unlink($file); // delete file
+		}
 
 		$this->outMessage = 1;
 	}

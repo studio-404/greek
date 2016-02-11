@@ -1,8 +1,7 @@
 <?php
 defined('DIR') OR exit;
-
 $c['cmsversion'] = '1.0.1';
-$c['websitevertion'] = '1.0.2';
+$c['websitevertion'] = '1.1.1'; 
 $c['website.mode'] = 'WorkingMode'; // UnderDeveloper or WorkingMode
 $c['developer.message'] = 'Website is under developer !'; // Developer message when under developer
 $c['allowes.ips'] = array('94.240.219.35'); // allowed ips when website is under developer
@@ -23,8 +22,15 @@ $c['folders.plugins'] = '_plugins/';
 $c['database.hostname'] = '127.0.0.1';
 $c['database.charset'] = 'UTF8';
 $c['database.username'] = 'greekepi_graphy';
-$c['database.password'] = 'nSqsPOz04f';
+$c['database.password'] = 'lKKj@#$uiIlKKj@#$uiIjUUH%4';
 $c['database.name'] = 'greekepi_graphy';
+
+//SITE Email Account
+$c["email.host"] = "mail.greekepigraphy.ge";
+$c["email.username"] = "contact@greekepigraphy.ge";
+$c["email.password"] = "WXyF9jmzJ5";
+$c["email.fromemail"] = "greekepi@www15.serv.ge";
+$c["email.fromename"] = "GreekEpigraphy.Ge";
 
 // SITE CONFIGURATION
 $c['date.timezone'] = 'Asia/Tbilisi';

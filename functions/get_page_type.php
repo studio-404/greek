@@ -65,23 +65,25 @@ class get_page_type extends connection{
 							":visibility"=>1,
 							":status"=>1
 						));
-						$fetch = $prepare->fetch(PDO::FETCH_ASSOC);
-						$pgtype = $fetch['pgtype'];
+						if($slug!="" && $prepare->rowCount()<=0){
+							redirect::url(WEBSITE.LANG."/page404");
+						}else{
+							$fetch = $prepare->fetch(PDO::FETCH_ASSOC);
+							$pgtype = $fetch['pgtype'];
 
-						if($pgtype=="newspage"){
-							$out = "newsinside";
-						}else if($pgtype=="eventpage"){
-							$out = "eventsinside"; 
+							if($pgtype=="newspage"){
+								$out = "newsinside";
+							}else if($pgtype=="eventpage"){
+								$out = "eventsinside"; 
+							}
 						}
-						
-					}catch(Exception $e){ $out = "error_page"; }
+					}catch(Exception $e){ redirect::url(WEBSITE.LANG."/page404"); }
 
 
 					break;
 				}
 			}else{
-				$out = "error_page";
-
+				redirect::url(WEBSITE.LANG."/page404");
 			}
 		}
 

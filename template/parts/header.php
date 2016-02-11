@@ -1,19 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
+<html lang="<?=LANG?>">
 <head> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php 
 if($data["homepage_general"]){
-	$title = $data["homepage_general"][0]->title; 
-	if($data["homepage_general"][0]->description){
-		$desc = $data["homepage_general"][0]->description;
-	}else{
-		$desc = $title." - Greekepigraphy.ge"; 	
-	}
-	
-	$shareImage = TEMPLATE.'img/logoshare.png';
-	$tags = $data["homepage_general"][0]->keywords;
+$title = $data["homepage_general"][0]->title; 
+if($data["homepage_general"][0]->description){
+$desc = $data["homepage_general"][0]->description;
+}else{
+$desc = $title." - Greekepigraphy.ge"; 	
+}
+$shareImage = TEMPLATE.'img/logoshare.png';
+$tags = $data["homepage_general"][0]->keywords;
 }
 echo $title; 
 ?> - Greekepigraphy.ge</title>
@@ -42,7 +41,7 @@ echo $title;
 <style type="text/css">
 <?php
 if(LANG=="en"){
-	echo '*{ font-family: roboto !important; } .content_title_2{ font-size:21px; }';
+echo '*{ font-family: roboto !important; } .content_title_2{ font-size:21px; }';
 }
 ?>
 </style>
@@ -57,56 +56,56 @@ ga('create', 'UA-72117132-1', 'auto');
 ga('send', 'pageview');
 </script> 
 <div class="header_div" <?=(LANG=="en") ? 'style="font-family: roboto"' : ''?>>
-	<div class="container">
-		<div class="logo">
-			<a href="<?=WEBSITE?>">
-				<img src="<?php echo TEMPLATE;?>img/logo.png" alt="logo" value="" />
-			</a>
-		</div>
-		<div class="domain_name" style="font-family: roboto_bold !important">www.greekepigraphy.ge</div>
-		<div class="search_div">
-			<input type="text" id="keyword" onkeypress="submitme(event,'search-button')" value="<?=(Input::method("GET","search")) ? htmlentities(Input::method("GET","search")) : ''?>" placeholder="<?=$data["language_data"]["val91"]?>"/>
-			<input type="submit" id="search-button" value="<?=$data["language_data"]["val3"]?>"/>
-		</div>
-		<div class="reg_login">
-			<?php if(!isset($_SESSION["greek_id"])): ?>
-			<a href="<?=WEBSITE.LANG?>/userspage" class="underlineme"><?=$data["language_data"]["val92"]?></a>
-			<?php endif; ?>
-
-			<?php if(isset($_SESSION["greek_id"])): ?>
-			<a href="<?=WEBSITE.LANG?>/userspage" class="underlineme"><?=$data["language_data"]["val101"]?></a> <a>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
-			<a href="javascript:void(0)" class="signout underlineme"><?=$data["language_data"]["val102"]?></a> 
-			<?php endif; ?>
-		</div>
-		<div class="lang_div">
-			<?php
-				$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-				$find = '/'.LANG.'/'; 
-				$repl = (LANG=="ge") ? '/en/' : '/ge/';
-				$replace = str_replace($find, $repl, $actual_link);
-			?>
-			<a href="<?=$replace?>" id="currlanguage" data-currentlang="<?=LANG?>"><?=(LANG=="ge") ? "ENGLISH" : "GEORGIAN"?></a>
-		</div>
-	</div>
+<div class="container">
+<div class="logo">
+<a href="<?=WEBSITE_?>">
+<img src="<?php echo TEMPLATE;?>img/logo.png" alt="logo" value="" />
+</a>
 </div>
-
+<div class="domain_name" style="font-family: roboto_bold !important">www.greekepigraphy.ge</div>
+<div class="search_div">
+<input type="text" id="keyword" onkeypress="submitme(event,'search-button')" value="<?=(Input::method("GET","search")) ? htmlentities(Input::method("GET","search")) : ''?>" placeholder="<?=$data["language_data"]["val91"]?>"/>
+<input type="submit" id="search-button" value="<?=$data["language_data"]["val3"]?>"/>
+</div>
+<div class="reg_login">
+<?php if(!isset($_SESSION["greek_id"])): ?>
+<a href="<?=WEBSITE.LANG?>/userspage" class="underlineme"><?=$data["language_data"]["val92"]?></a>
+<?php endif; ?>
+<?php if(isset($_SESSION["greek_id"])): ?>
+<a href="<?=WEBSITE.LANG?>/userspage" class="underlineme"><?=$data["language_data"]["val101"]?></a> <a>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+<a href="javascript:void(0)" class="signout underlineme"><?=$data["language_data"]["val102"]?></a> 
+<?php endif; ?>
+</div>
+<div class="lang_div">
+<?php
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$find = '/'.LANG.'/'; 
+$repl = (LANG=="ge") ? '/en/' : '/ge/';
+$replace = str_replace($find, $repl, $actual_link, $count);
+if($count==0){
+$replace = WEBSITE."en/".$c["welcome.page.slug"];
+}
+?>
+<a href="<?=$replace?>" id="currlanguage" data-currentlang="<?=LANG?>"><?=(LANG=="ge") ? "ENGLISH" : "GEORGIAN"?></a>
+</div>
+</div>
+</div>
 <div class="top_menu">
 <div class="container-fluid padding_0">
-	<div class="container">
- <!-- Static navbar -->
-      <nav class="navbar">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse padding_0" <?=(LANG=="en") ? 'style="font-family: roboto"' : ''?>>
-              <?=$data["main_menu"]?>
-          </div><!--/.nav-collapse -->
-      </nav>
-	</div> 
+<div class="container">
+<nav class="navbar">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div id="navbar" class="navbar-collapse collapse padding_0" <?=(LANG=="en") ? 'style="font-family: roboto"' : ''?>>
+<?=$data["main_menu"]?>
+</div>
+</nav>
+</div> 
 </div>
 </div>

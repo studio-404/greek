@@ -68,7 +68,7 @@ class model_admin_addpage extends connection{
 				else{ $expiredate=time(); }
 				
 				$background = '';
-				if(isset($_POST['background'])){
+				if(isset($_POST['background']) && !empty($_POST['background'])){
 					$expl = explode("/",$_POST['background']);				
 					$from = DIR.$expl[1]."/".end($expl);
 					$To = DIR.'files/background/'.end($expl);

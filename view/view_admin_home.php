@@ -111,6 +111,13 @@
 						</div>
 
 						<div class="row">
+							<span class="cell primary" data-label="Vehicle">Main Page</span>
+							<span class="cell" data-label="Action">
+								<a href="?action=sitemap&amp;super=1"><i class="fa fa-pencil-square-o"></i></a>
+							</span>
+						</div>
+
+						<div class="row">
 							<span class="cell primary" data-label="Vehicle">Main Page Slider</span>
 							<span class="cell" data-label="Action">
 								<?php $_SESSION["token"] = md5(sha1(time())); ?>
@@ -139,6 +146,15 @@
 								<a href="?action=componentModule&amp;id=9&amp;token=<?=$_SESSION["token"]?>"><i class="fa fa-pencil-square-o"></i></a>
 							</span>
 						</div>
+
+						<div class="row">
+							<span class="cell primary" data-label="Vehicle">Photo Gallery</span>
+							<span class="cell" data-label="Action">
+								<a href="?action=gallery&amp;type=photogallerypage&amp;id=6&amp;super=1&amp;token=<?=$_SESSION['token']?>"><i class="fa fa-pencil-square-o"></i></a>
+							</span>
+						</div>
+
+						
 
 						<div class="row">
 							<span class="cell primary" data-label="Vehicle">Contact Info</span>

@@ -18,6 +18,42 @@ class ajax extends connection{
 	public function requests($c){
 		$conn = $this->conn($c); 
 
+		if(Input::method("POST","recoverrequest")=="true" && Input::method("POST","e") && Input::method("POST","l")){
+			if(filter_var(Input::method("POST","e"), FILTER_VALIDATE_EMAIL)) {
+		        $sql = 'SELECT `id` FROM `studio404_users` WHERE `username`=:username AND `status`!=1';
+		        $prepare = $conn->prepare($sql);
+		        $prepare->execute(array(
+		        	":username"=>Input::method("POST","e") 
+		        ));
+		        if($prepare->rowCount() > 0){
+		        	$ustring = ustring::random(5).time();
+		        	$temp = ustring::random(5);
+		        	$u = 'INSERT INTO `studio404_users_pass_recover` SET `date`=:date, `ip`=:ip, `usersemail`=:usersemail, `temp`=:temp, `hash`=:hash, `status`=0';
+		        	$prepare2 = $conn->prepare($u);
+		        	$prepare2->execute(array(
+		        		":date"=>time(), 
+		        		":ip"=>get_ip::ip(), 
+		        		":usersemail"=>Input::method("POST","e"), 
+		        		":temp"=>$temp, 
+		        		":hash"=>$ustring
+		        	));
+
+		        	$send_email = new send_email(); 
+		        	$to = Input::method("POST","e");
+		        	$subject = (Input::method("POST","l")=="ge") ? "პაროლის აღდგება" : "Passowd recovery";
+		        	$message = (Input::method("POST","l")=="ge") ? "პაროლის აღსადგენად გადადით დაკლიკეთ <a href='".WEBSITE."ge/temporary-password?token=".$ustring."' target='_blank'>აქ</a>" : "To recover password please click <a href='".WEBSITE."en/temporary-password?token=".$ustring."' target='_blank'>here</a>";
+		        	$send_email->send($c["email.host"],$c["email.username"],$c["email.password"],$c["email.fromemail"],$c["email.fromename"],$to,$subject,$message); 
+		        	echo "Done";
+		        }else{
+		        	echo "error";
+		    	}
+		    }
+		    else {
+		       echo "error";
+		    }
+			exit();
+		}
+
 		if(Input::method("POST","registerme")=="true"){
 			$e = Input::method("POST","e"); 
 			$p = Input::method("POST","p"); 
@@ -60,7 +96,7 @@ class ajax extends connection{
 			$dlang = Input::method("POST","l");
 			
 			if($type=="epigraphy"){
-				$sql = 'SELECT * FROM `studio404_components_inside` WHERE `cid`=:cid AND `lang`=:lang AND `status`!=1 ORDER BY `position` ASC LIMIT '.$from.','.$to;
+				$sql = 'SELECT `id`,`idx`,`title`,`cid`,`lang`,`url` FROM `studio404_components_inside` WHERE `cid`=:cid AND `lang`=:lang AND `status`!=1 ORDER BY `position` ASC LIMIT '.$from.','.$to;
 				$prepare = $conn->prepare($sql); 
 				$prepare->execute(array(
 					":cid"=>8, 
@@ -73,7 +109,7 @@ class ajax extends connection{
 					echo "Empty"; 
 				}
 			}else if($type=="usefulllinks"){
-				$sql = 'SELECT * FROM `studio404_components_inside` WHERE `cid`=:cid AND `lang`=:lang AND `status`!=1 ORDER BY `position` ASC LIMIT '.$from.','.$to;
+				$sql = 'SELECT `id`,`idx`,`title`,`cid`,`lang`,`url` FROM `studio404_components_inside` WHERE `cid`=:cid AND `lang`=:lang AND `status`!=1 ORDER BY `position` ASC LIMIT '.$from.','.$to;
 				$prepare = $conn->prepare($sql); 
 				$prepare->execute(array(
 					":cid"=>9, 

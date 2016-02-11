@@ -28,8 +28,13 @@ class model_admin_languageData extends connection{
 		$itemsPerPage = 10;
 		$pager = new pager();
 		$pager = $pager->action($c,$sql,$exe_array,$path,$itemsPerPage);	
-		$out['table'] = $this->table($c,$pager[0],$exe_array);
-		$out['pager'] = $pager[1];
+		if(!empty($pager[0])){
+			$out['table'] = $this->table($c,$pager[0],$exe_array);
+			$out['pager'] = $pager[1];
+		}else{
+			$out['table'] = "";
+			$out['pager'] = "";
+		}
 		return $out;
 	}
 

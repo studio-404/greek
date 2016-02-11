@@ -7,14 +7,8 @@ class document extends connection{
 	public function template($c,$page){
 		$conn = $this->conn($c); 
 		$idx = Input::method("GET","id");
-		if(!isset($_SESSION["greek_id"])){
-			if(LANG=="ge"){
-				echo "<strong>გთხოვთ გაიაროთ ავტორიზაცია !</strong>";
-				exit();
-			}else{
-				echo "<strong>Please sing in !</strong>";
-				exit();
-			}
+		if(!isset($_SESSION["greek_id"])){ 
+			redirect::url(WEBSITE.LANG."/userspage?docid=".$idx);
 		}
 		$sql = 'SELECT `document` FROM `studio404_components_inside` WHERE `idx`=:idx AND `lang`=:lang';
 		$prepare = $conn->prepare($sql); 
@@ -39,23 +33,11 @@ class document extends connection{
 				// output content
 				echo $content;
 			}else{
-				if(LANG=="ge"){
-					echo "<strong>მოთხოვნილი დოკუმენტი ვერ მოიძებნა !</strong>";
-					exit();
-				}else{
-					echo "<strong>Sorry, Could not load requested document !</strong>";
-					exit();
-				}
+				redirect::url(WEBSITE.LANG."/page404");
 			}
 			
 		}else{
-			if(LANG=="ge"){
-				echo "<strong>მოთხოვნილი დოკუმენტი ვერ მოიძებნა !</strong>";
-				exit();
-			}else{
-				echo "<strong>Sorry, Could not load requested document !</strong>";
-				exit();
-			}
+			redirect::url(WEBSITE.LANG."/page404");
 		}
 	}
 }

@@ -1166,6 +1166,7 @@ class cache extends connection{
 			$get_slug_from_url = new get_slug_from_url();
 			$slug = $get_slug_from_url->slug();
 			$sql = 'SELECT 
+			`studio404_gallery_attachment`.`idx` AS smi_idx, 
 			`studio404_media_item`.`slug` AS smi_slug, 
 			`studio404_media_item`.`title` AS sg_title, 
 			(
